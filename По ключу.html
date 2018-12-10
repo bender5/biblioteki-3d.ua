@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script type="application/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+<script type="application/javascript">
+var data1 = [
+{"name": "Ringo", "height": 175},
+{"name": "Paul", "height": 190}
+];
+var data2 = [
+{"name": "Paul", "height": 190},
+{"name": "Sam", "height": 170}
+];
+d3.select('body').selectAll('p')
+.data(data1)
+.enter()
+.append('p')
+.text(function(d) { return d.height; });
+var p = d3.select('body').selectAll('p')
+.data(data2, function(d) { return d.name; });
+p.enter().append('p');
+p.exit().remove();
+p.text(function(d) { return d.height; });
+</script>
+</body>
+</html>
